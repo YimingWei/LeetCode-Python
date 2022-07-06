@@ -17,6 +17,7 @@
 #             node2.next = node1
 #             tmp = node1
 #         return dummy.next
+
 # Method2
 class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
