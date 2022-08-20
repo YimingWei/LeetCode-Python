@@ -1,0 +1,10 @@
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        # 关键思路：
+        # （1）当前位置能到达，则当前位置之前的所有位置都能到达；只要保证max_length >= i，就表示当前位置i可以到达
+        # （2）根据（1），只要确保最远可到达的位置不小于len(nums)-1，则可以到达数组末尾；即max_length >= len(nums)-1
+        max_length = 0 #初始化最远位置
+        for i, jump in enumerate(nums): #(i, nums[i])
+            if max_length >= i and i+jump >= max_length: #当前位置i可以到达，并且i+jump超过最远位置时，更新最远位置
+                max_length = i + jump
+        return max_length >= i
