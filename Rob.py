@@ -17,7 +17,7 @@ class Solution:
         # return dp[-1]
 
         # 2.dp,空间复杂度O(1)
-        prev, curr = 0, 0 #f(k)只与f(k-1)和f(k-2)有关,因此只需要动态保存两个变量
+        prev, curr = 0, 0 #f(k)只与f(k-1)和f(k-2)有关,因此只需要动态保存两个变量,节省空间
         for num in nums:
             prev, curr = curr, max(curr, prev + num)
         return curr
