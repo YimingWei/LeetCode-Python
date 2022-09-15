@@ -8,9 +8,16 @@ class Solution:
             f(k) = max(f(k-1), f(k-2)+nums[k-1])
             f(0)=0, f(1)=nums[0]
         """
-        n = len(nums)
-        dp = [0] * (n+1)
-        dp[1] = nums[0]
-        for i in range(2, n+1):
-            dp[i] = max(dp[i-1], dp[i-2]+nums[i-1])
-        return dp[-1]
+        # 1.dp,空间复杂度O(n)
+        # n = len(nums)
+        # dp = [0] * (n+1)
+        # dp[1] = nums[0]
+        # for i in range(2, n):
+        #     dp[i] = max(dp[i-1], dp[i-2]+nums[i-1])
+        # return dp[-1]
+
+        # 2.dp,空间复杂度O(1)
+        prev, curr = 0, 0 #f(k)只与f(k-1)和f(k-2)有关,因此只需要动态保存两个变量
+        for num in nums:
+            prev, curr = curr, max(curr, prev + num)
+        return curr
